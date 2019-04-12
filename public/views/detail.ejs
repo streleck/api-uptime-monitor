@@ -1,0 +1,85 @@
+<%- include('head.ejs') %>
+  <div class="main">
+    <div class="info-board">
+      <table>
+        <tbody>
+          <tr>
+            <td class="table-key">name</td><td class="table-value"><%= displayName %></td>
+          </tr>
+          <tr>
+              <td class="table-key">url</td><td class="table-value"><%= url %></td>
+          </tr>
+          <tr>
+              <td class="table-key">emails to</td><td class="table-value"><%= emails %></td>
+          </tr>
+        </tbody>
+      </table>
+              
+              
+              
+      
+      <button id="add-email-recipient-button" type="button">Add email recipient</button>
+      <form action="/addEmail" method="POST" id="add-email-form">
+        <input type="hidden" name="apiId" value="<%= apiId %>">
+        <input type="text" id="new-email-address" name="newEmailAddress">
+        <button type="submit">Add</button>
+        <button id="cancel-add-email-button" type="button">Cancel</button>
+      </form>
+      <br/>
+      <p>total queries:&nbsp;</p><p><%= getChecks.length %></p><br/>
+      <p>total errors:&nbsp;</p><p><%= totalFails %></p><br/>
+    </div>
+  
+    <div class="tables-container">
+      <div>
+        <h2 class="table-title">Get Checks</h2>
+        <table>
+          <thead>
+            <th>Time</th>
+            <th>Status</th>
+          </thead>
+          <div class="table-container">
+          <tbody>
+          <% getChecks.forEach((getCheck) => { %>
+            <tr class=<%= getCheck.wasSuccessful ? 'success' : 'error' %>>
+              <td><%= getCheck.time %></td>
+              <td>
+                <% if (!getCheck.wasSuccessful) { %>
+                  <!-- <a href=<%= '/detail/' + apiId + '/error/' + getCheck.id %>><%= getCheck.error %></a> -->
+                  <%= getCheck.error %>
+                <% } else { %> success <% } %>
+              </td>
+            </tr>
+          <% }) %>
+          </tbody>
+        </div>
+        </table>
+      </div>
+
+      <div>
+        <h2 class="table-title">Post Checks</h2>
+        <table>
+          <thead>
+            <th>Time</th>
+            <th>Error</th>
+          </thead>
+          <tbody>
+          <div class="table-container">
+          <% postChecks.forEach((postCheck) => { %>
+            <tr class="<%= postCheck.wasSuccessful ? 'success' : 'error' %>">
+              <td><%= postCheck.time %></td>
+              <td>
+                <% if (!postCheck.wasSuccessful) { %>
+                  <!-- <a href=<%= '/detail/' + apiId + '/error/' + postCheck.id %>><%= postCheck.error %></a> -->
+                  <%= postCheck.error %>
+                  <% } else { %> success <% } %>
+              </td>
+            </tr>
+          <% }) %>
+          </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<%- include('end.ejs') %>

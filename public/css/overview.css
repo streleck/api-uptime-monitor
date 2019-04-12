@@ -1,0 +1,33 @@
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  box-shadow: 1px 1px 1px black;
+  background-color: white;
+  max-height: 500px;
+  overflow: auto;
+  width: 750px;
+}
+tr, th, td {
+  border: 1px solid black;
+  padding: 10px 20px 10px 20px;
+  max-width: 240px;
+  overflow: hidden;
+}
+
+thead {
+  background-color: #ddd;
+}
+
+td.success {
+  background-color: lightgreen;
+}
+
+td.error {
+  background-color: #f88
+}
+
+tbody>tr:hover { 
+  background-color: lightyellow;
+  cursor: pointer;
+}
+

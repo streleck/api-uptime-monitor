@@ -1,0 +1,30 @@
+<%- include('head.ejs') %>
+  <div class="main">
+    <% if (apis.length === 0) { %>
+      <h2>There are no apis being monitored.</h2>
+    <% } else { %>
+      <table>
+        <thead>
+          <th>API Name</th>
+          <th>URL</th>
+          <th>uptime (total)</th>
+          <th>uptime (24 hrs)</th>
+          <th>Last Check At</th>
+        </thead>
+        <tbody>
+          <% apis.forEach((api) => { %>
+            <tr id=<%= api.id %>>
+              <td><%= api.name %></td>
+              <td><%= api.url %></td>
+              <td></td>
+              <td>53%</td>
+              </td>
+              <td><%= api.lastTest %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+    <a href="/add">Add new api to monitor.</a>
+  </div>
+<%- include('end.ejs') %>

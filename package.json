@@ -1,0 +1,32 @@
+{
+  "name": "api-uptime-monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "monitorApi.js",
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "moment": "^2.23.0",
+    "mongoose": "^5.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/streleck/elastic-app-health-check.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/streleck/elastic-app-health-check/issues"
+  },
+  "homepage": "https://github.com/streleck/elastic-app-health-check#readme"
+}

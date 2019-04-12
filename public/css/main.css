@@ -1,0 +1,39 @@
+html {
+  height: 100%;
+}
+body {
+  background-color: black;
+  background-image: url("../images/purple-fade-background.png");
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 100px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+div.main-header {
+  display: block;
+  cursor: pointer;
+}
+div.main-header a:hover{
+  color: white;
+}
+
+div.main-header a{
+  color: lightgreen;
+  padding: 0 5px 0 5px;
+  margin: 0 10px 0 10px; 
+  text-decoration: none;
+}
+div.main-container {
+  width: 80%;
+  max-width: 900px;
+  margin: auto;
+}
+h1 {
+  color: #eeff8e;
+  text-shadow: 2px 3px 1px rgba(0,0,0,0.2);
+  font-size: 60px;
+  font-family: 'Righteous', cursive;
+  display: inline-block;
+}

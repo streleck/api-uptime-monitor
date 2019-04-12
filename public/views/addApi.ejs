@@ -1,0 +1,70 @@
+<%- include('head.ejs') %>
+  <h2>Monitor a new API</h2>
+  <div class="main">
+    <form action="/add" method="POST">
+      <table>
+        <tbody>
+          <tr>
+            <td class="input-label"><label for="name">api name:</label></td>
+            <td class="input-main"><input type="text" name="name" id="name"></td>
+            <td><button class="add-field-btn" type="button" style="visibility: hidden;">+</button></td>
+          </tr>
+          <tr>
+            <td class="input-label"><label for="url">url:</label></td>
+            <td class="input-main"><input type="text" name="url" id="url"></td>
+            <td><button class="add-field-btn" type="button" style="visibility: hidden;">+</button></td>
+          </tr>
+          <tr>
+              <td class="input-label"><label for="method">method:</label></td>
+              <td class="input-main">
+                <select id="method">
+                  <option value="GET">GET</option>
+                  <option value="POST">POST</option>
+                  <option value="PUT">PUT</option>
+                </select>
+                <span class="expand-request-menu">
+                  <button class="expand-request-btn" type="button" data-type="params">params</button>
+                  <button class="expand-request-btn" type="button" data-type="headers">headers</button>
+                  <button class="expand-request-btn" type="button" data-type="body">body</button>
+                </span>
+              </td>
+          </tr>
+          <tr class="expandable-row" data-type="params" style="display:none;">
+            <td class="input-label"><label for="param-key-1">params:</label></td>
+            <td class="input-main">
+              <div>
+                <input class="key-value-input" type="text" name="params-key-1" id="params-key-1">&nbsp;:&nbsp;<input class="key-value-input" type="text" name="params-value-1" id="params-value-1">
+              </div>
+            </td>
+            <td><button class="add-field-btn" type="button" data-type="params">+</button></td>
+          </tr>
+          <!-- <tr class="expandable-row" data-type="authorization" style="display:none;">
+            <td class="input-label"><label for="authorization-key-1">authorization:</label></td>
+            <td><input class="key-value-input" type="text" name="authorization-key-1" id="authorization-key-1">&nbsp;:&nbsp;<input class="key-value-input" type="text" name="authorization-value-1" id="authorization-value-1"></td>
+            <td><button class="add-field-btn" type="button" data-type="data">+</button></td>
+          </tr> -->
+          <tr class="expandable-row" data-type="headers" style="display:none;">
+            <td class="input-label"><label for="headers-key-1">headers:</label></td>
+            <td class="input-main"><input class="key-value-input" type="text" name="headers-key-1" id="headers-key-1">&nbsp;:&nbsp;<input class="key-value-input" type="text" name="headers-value-1" id="headers-value-1"></td>
+            <td><button class="add-field-btn" type="button" data-type="headers">+</button></td>
+          </tr>
+          <tr class="expandable-row" data-type="body" style="display:none;">
+            <td class="input-label"><label for="body-key-1">body:</label></td>
+            <td class="input-main"><input class="key-value-input" type="text" name="body-key-1" id="body-key-1">&nbsp;:&nbsp;<input class="key-value-input" type="text" name="body-value-1" id="body-value-1"></td>
+            <td><button class="add-field-btn" type="button" data-type="body">+</button></td>
+          </tr>
+          <tr>
+            <td class="input-label"><label for="email-1">email alerts:</label></td>
+            <td class="input-main"><input type="text" name="email-1" id="email-1" placeholder="send alerts to"></td>
+            <td><button class="add-field-btn" type="button" data-type="email">+</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-action-btns">
+        <button type="button" id="test-api-btn">Test</button>
+        <button type="submit" id="submit-btn">Start Monitoring</button>
+      </div>
+
+    </form>
+  </div>
+  <%- include('end.ejs') %>

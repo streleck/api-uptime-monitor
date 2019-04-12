@@ -1,0 +1,80 @@
+a.overview-link {
+  color: gold;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.info-board {
+  padding: 10px 0 30px 30px;
+}
+.info-board > h3, .info-board > h2, .info-board > p {
+  display: inline-block;
+  color: lightgreen;
+}
+table {
+  background: transparent;
+  border: none;
+}
+
+td {
+  min-width: 50px;
+  border: none;
+}
+
+th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#add-email-form {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+/* table {
+  color: black;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px black;
+  border-collapse: collapse;
+  margin: auto;
+  max-height: 350px;
+  display: block;
+  overflow: auto;
+  text-shadow: none;
+} */
+
+/* tr, th, td {
+  border: 1px solid black;
+  padding: 0 20px 0 20px;
+  max-width: 300px;
+  overflow: hidden;
+} */
+
+/* tr, td {
+  line-height: 5px;
+} */
+/* tr.success {
+  background-color: lightgreen;
+}
+tr.error {
+  background-color: #f88
+} */
+/* .tables-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 100px 0 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.table-container {
+  max-height: 300px;
+  overflow: auto;
+} */
