@@ -8,10 +8,9 @@ const app = express();
 
 const monitorApi = require('./monitorApi');
 
-//mongoose.connect("mongodb://localhost/es-app-health-check");
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/es-app-health-check");
-//mongoose.connect("mongodb://heroku_spscw08h:5k2lr31jtfhrv86kpn9kdh1eum@ds021701.mlab.com:21701/heroku_spscw08h");
-// Set mongoose to leverage built in JavaScript ES6 Promises
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/api-monitor").catch(function (reason) {
+  console.log('Unable to connect to the mongodb instance. Error: ', reason);
+});
 mongoose.Promise = Promise;
 
 const routes = require('./routes');
@@ -27,16 +26,17 @@ var PORT = process.env.PORT || 3000;
 
 var ApiToTest = require('./models/ApiToTest');
 
-// ApiToTest.find({}, function(err, docs){
-//   if(err){
-//     console.log(err);
-//   }
-//   else {
-//     for(let doc of docs){
-//       monitorApi(doc);
-//     }
-//   }
-// });
+ApiToTest.find({}, function(err, APIs){
+  if(err){
+    console.log('err in server.js, line 30: ', err);
+  }
+  else {
+    // for(let doc of docs){
+    //   monitorApi(doc);
+    // }
+    monitorApi(APIs[0]);
+  }
+});
 
 // var newApp = new ApiToTest({
 //   displayName: 'Actual',

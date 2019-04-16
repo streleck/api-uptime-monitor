@@ -1,11 +1,14 @@
-form {
+#main {
   background-color: white;
   color: black;
   font-size: 24px;
   text-shadow: none;
   border: 1px solid black;
-  padding: 40px;
+  padding: 28px 20px 20px 20px;
   box-shadow: 3px 4px 2px rgba(0,0,0,0.3);
+}
+form {
+  padding: 20px 40px 20px 20px;
 }
 table {
   width: 100%;
@@ -24,6 +27,15 @@ select {
   font-size: 16px;
   padding: 4px 4px 4px 8px;
   width: 80px;
+}
+#main h2{
+  font-size: 30px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: rgb(134, 100, 160);
+  margin: 0 10px 0 10px;
+  border-bottom: 1px solid rgb(134, 100, 160);
+  margin-bottom: 20px;
+  padding: 0 0 12px 20px;
 }
 .input-label {
   width: 120px;
@@ -59,8 +71,12 @@ select {
 .expand-request-btn:hover {
   opacity: 0.7;
 }
+.multi-field-container {
+  width: calc(100% - 35px);
+  display: inline-block;
+}
 .key-value-input {
-  width: 46.5%;
+  width: 46%;
 }
 .add-field-btn, .add-email-btn{
   height: 28px;
@@ -68,26 +84,66 @@ select {
   background-image: url('../images/purple-fade-background.png');
   background-size: 200% 100%;
   border: none;
-  color: rgba(238, 255, 142, 0.7);
+  color: rgba(238, 255, 142, 0.8);
   font-size: 16px;
   font-weight: bold;
   background-position-x: center;
   cursor: pointer;
 }
 .add-field-btn:hover {
-  color: rgba(238, 255, 142, 0.9);
+  color: rgba(238, 255, 142, 1.0);
+  opacity: 0.9;
 }
 .form-action-btns {
-  text-align: right;
-  padding-right: 3%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
-.form-action-btns > button {
+.form-btn {
   background-image: url("../images/purple-fade-background.png");
   background-size: 200% 100%;
   border: none;
-  color: rgba(238, 255, 142, 0.7);
+  color: rgba(238, 255, 142, 0.8);
   font-size: 16px;
   padding: 8px 16px;
-  margin-top: 20px;
-  margin-left: 20px;
+  cursor: pointer;
 }
+.form-btn:hover {
+  color: rgba(238, 255, 142, 1.0);
+  opacity: 0.9;
+}
+.form-btn[disabled]{
+  background-image: url('../images/gray-fade-background.png');
+  color: #ccc;
+}
+.form-btn[disabled]:hover{
+  color: #ccc;
+  opacity: 1.0;
+}
+.form-action-btns > button {  
+  margin-top: 20px;
+  margin-left: 14px;
+}
+#api-test-section {
+  display: none;
+  padding: 0 40px 20px 20px;
+}
+#api-test-section h4{
+  color: rgb(134, 100, 160);
+  font-family: 'Asap', sans-serif;
+  font-size: 21px;
+  font-weight: normal;
+}
+#test-section-content {
+  margin: 0 0 10px 30px;
+}
+#test-section-content h4>span {
+  color: rgb(211, 160, 250);
+}
+#initial-test-results p {
+  font-size: 16px;
+}
+p.error{
+  color: red;
+}
+

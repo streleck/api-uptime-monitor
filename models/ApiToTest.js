@@ -10,8 +10,10 @@ var ApiToTestSchema = new Schema({
   },
   url: {
     type: String,
-    required: true,
-    unique: true
+    required: true
+  },
+  requestBody: {
+    type: Object
   },
   emails: [{
     type: String,

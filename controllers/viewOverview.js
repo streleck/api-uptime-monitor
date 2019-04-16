@@ -15,7 +15,6 @@ module.exports = (req, res, next) => {
     else{
       let apiList = [];
       for(let api of apis){
-        console.log('%%%%%%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%\n%%%%%%%%%%%%%%%%%%%%\n');
         let n = 0;
         // for(let getCheck of api.getChecks){
         //   console.log(n + ') ' + getCheck.timestamp)

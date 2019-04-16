@@ -24,7 +24,7 @@ module.exports = function(apiRecord){
     }
   };
 
-  function logTest(status, errorObject){
+  function logTest(status, error){
     console.log('trying to update test');
     ApiToTest.findOneAndUpdate(
       { _id: apiRecord._id }, 
@@ -32,7 +32,7 @@ module.exports = function(apiRecord){
         { 
           wasSuccessful: status,
           timestamp: Date.now(),
-          errorObject: errorObject
+          error: error
         }
       }},
       function(err, doc){
@@ -45,6 +45,7 @@ module.exports = function(apiRecord){
       }
     )
   };
+
   let monitor = setInterval(function(){
     // Get most recent status of api
     ApiToTest.findOne({_id: apiRecord._id}, function(err, doc){
@@ -54,37 +55,31 @@ module.exports = function(apiRecord){
         return;
       }
       else {
-        let testStatus = doc.tests.length > 0 ? doc.getChecks[doc.tests.length -1].wasSuccessful : true;
+        //let testStatus = doc.tests.length > 0 ? doc.checks[doc.tests.length -1].wasSuccessful : true;
         // test
-        axios({
-          method:'post',
-          url: apiRecord.url + '/tests/_doc',
-          data: {"datapoint": "test"},
-          headers: {'Content-Type':'apilication/json'},
-          httpsAgent: agent 
-        })
+        let testStatus = true;
+        axios(apiRecord.requestData)
         .then(function(response) {
-          console.log('POST Success');
-          if(!postStatus){
+          console.log('success;!')
+          if(!testStatus){
             sendEmails(
-              'is functioning for POST',
-              'After having previously failed a POST attempt, this api has now successfully accepted a POST.'
+              'is back to functioning.',
+              'After having previously failed an attempt, this api has returned a successful response.'
             );
           }
-          logPostCheck(true, 'success');
+          logTest(true, 'success');
         })
         .catch(function(error) {
-          //console.log('POST fail!!!!! \n', error);
-          console.log('POST fail!');
-          logPostCheck(false, error);
+          console.log(`${apiRecord.requestBody.method} fail!`);
+          logTest(false, error);
           sendEmails(
-            'has failed a POST attempt',
+            `has failed a ${apiRecord.requestBody.method} attempt`,
             error
           );
         });
       }
     });
     //run check every 5 minutes
-  }, (1000 * 60 * 5));
+  // }, (1000 * 60 * 5));
+  }, (1000 * 10));
 }
-

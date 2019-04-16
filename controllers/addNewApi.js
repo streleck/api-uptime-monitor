@@ -1,27 +1,20 @@
 module.exports = (req, res, next) => {
 
   const ApiToTest = require('../models/ApiToTest');
-  const monitorApi = require('../monitorApi');
-  const axios = require('axios');
+ 
+  const requestBody = JSON.parse(req.body.requestBody);
 
-  var newApi = new ApiToTest({
-    displayName: req.body.name,
-    url: req.body.url,
-    displayUrl: req.body.url.split('@')[1] ? req.body.url.split('@')[1] : req.body.url,
-    emails: req.body.email.split(',')
-  });
+  requestBody.emails = requestBody.emails ? requestBody.emails.split(',') : [];
+  
+  const newApi = new ApiToTest(requestBody);
+  console.log('txxz: ', newApi);
   newApi.save(function(err, doc) {
     if(err){
       console.log(err);
-      res.render('errorPage', {
-        pageTitle: 'Database Error',
-        pageName: 'errorPage',
-        message: 'There was an error saving record to database.'
-      });
+      res.json({'success': false});
     }
     else {
-      monitorApi(doc);
-      res.redirect('/');
+      res.json({'success': true});
     }
-  });
+ });
 }

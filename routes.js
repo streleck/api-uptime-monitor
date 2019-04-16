@@ -9,7 +9,7 @@ const viewPostError = require('./controllers/viewPostError');
 const viewAddApp = require('./controllers/viewAddApi');
 
 const addApi = require('./controllers/addNewApi');
-const addEmailRecipient = require('./controllers/addEmailRecipient');
+const initialTestApi = require('./controllers/initialTestApi');
 
 const router = express.Router();
 
@@ -20,7 +20,8 @@ router.get('/details/:id/postError/:errorIndex', viewPostError);
 router.get('/details/:id', viewDetail);
 router.get('/add', viewAddApp);
 
-router.post('/add', addApi);
-router.post('/addEmail', addEmailRecipient);
+router.post('/add-api', addApi);
+router.post('/initial-test', initialTestApi);
+
 
 module.exports = router;
