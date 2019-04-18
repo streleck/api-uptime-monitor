@@ -34,6 +34,6 @@ h1 {
   color: #eeff8e;
   text-shadow: 2px 3px 1px rgba(0,0,0,0.2);
   font-size: 60px;
-  font-family: 'Righteous', cursive;
+  font-family: 'Righteous', 'sans-serif';
   display: inline-block;
 }

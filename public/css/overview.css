@@ -4,8 +4,11 @@ table {
   box-shadow: 1px 1px 1px black;
   background-color: white;
   max-height: 500px;
-  overflow: auto;
-  width: 750px;
+  overflow: scroll;
+}
+tbody {
+  max-height: 300px;
+  overflow: scroll;
 }
 tr, th, td {
   border: 1px solid black;

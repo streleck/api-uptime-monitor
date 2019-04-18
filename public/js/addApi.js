@@ -197,7 +197,7 @@ function validateAndStructureFormData(){
     for(let possibleMatch of inputs){
       const possibleMatchInfo = possibleMatch.id.split('-');
       if(possibleMatchInfo[0] === dataType && possibleMatchInfo[1] === 'value' && possibleMatchInfo[2] === inputId){
-        requestBody[dataType][input.value] = possibleMatch.value;
+        requestBody[dataType][input.value.trim()] = possibleMatch.value.trim();
       }
     }
   }
@@ -209,14 +209,14 @@ function validateAndStructureFormData(){
         return;
       }
       else{
-        requestBody.url = input.value;
+        requestBody.url = input.value.trim();
       }
     }
     else if(!input.value){
       continue;
     }
     else if(input.id === 'displayName'){
-      displayName = input.value;
+      displayName = input.value.trim();
     }
     else if(input.id.startsWith('params-key')){
       matchKeyValuePair(input, inputs, 'params');

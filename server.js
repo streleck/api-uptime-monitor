@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 
-const monitorApi = require('./monitorApi');
+const monitorApi = require('./helper-functions/monitorApi');
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/api-monitor").catch(function (reason) {
   console.log('Unable to connect to the mongodb instance. Error: ', reason);
@@ -31,10 +31,9 @@ ApiToTest.find({}, function(err, APIs){
     console.log('err in server.js, line 30: ', err);
   }
   else {
-    // for(let doc of docs){
-    //   monitorApi(doc);
-    // }
-    monitorApi(APIs[0]);
+    for(let API of APIs){
+      monitorApi(API);
+    }
   }
 });
 
