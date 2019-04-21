@@ -1,80 +1,68 @@
-a.overview-link {
-  color: gold;
-  font-size: 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.info-board {
-  padding: 10px 0 30px 30px;
-}
-.info-board > h3, .info-board > h2, .info-board > p {
-  display: inline-block;
-  color: lightgreen;
-}
 table {
-  background: transparent;
-  border: none;
-}
-
-td {
-  min-width: 50px;
-  border: none;
-}
-
-th {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-#add-email-form {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-/* table {
-  color: black;
   border: 1px solid black;
-  box-shadow: 1px 1px 1px black;
   border-collapse: collapse;
-  margin: auto;
-  max-height: 350px;
-  display: block;
-  overflow: auto;
-  text-shadow: none;
-} */
-
-/* tr, th, td {
-  border: 1px solid black;
-  padding: 0 20px 0 20px;
-  max-width: 300px;
-  overflow: hidden;
-} */
-
-/* tr, td {
-  line-height: 5px;
-} */
-/* tr.success {
-  background-color: lightgreen;
+  box-shadow: 2px 3px 1px rgba(0,0,0,0.3);
+  background-color: white;
+  width: 100%;
+  max-height: 500px;
+  overflow: scroll;
+  font-family: 'Asap', sans-serif;
+  font-size: 16px;
+  margin-bottom: 30px;
 }
-tr.error {
-  background-color: #f88
-} */
-/* .tables-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 0 100px 0 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+h2 {
+  color: lightgreen;
+  font-family: 'Asap', sans-serif;
+  text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
+  margin: 0 0 5px 0;
 }
-.table-container {
+.section-header-btn {
+  color: rgba(238, 255, 142, 0.8);
+  font-size: 13px;
+  border: 1px solid rgba(238, 255, 142, 0.8);
+  border-radius: 2px;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 5px 0 0 15px;
+  height: 20px;
+}
+.section-header-btn:hover {
+  background-color: white;
+  color: rgb(40,40,0);
+  opacity: 0.5;
+}
+tbody {
   max-height: 300px;
-  overflow: auto;
-} */
+  overflow-y: scroll;
+  color: rgb(125, 90, 150);
+}
+tr, th, td {
+  border: 1px solid black;
+  padding: 10px 20px 10px 20px;
+  max-width: 240px;
+  overflow: hidden;
+}
+.table-edit {
+  width: 50px;
+  padding: 10px;
+}
+.edit-field-btn {
+  height: 26px;
+  padding: 0 11px 0 10px;
+  background-image: url('../images/purple-fade-background.png');
+  background-size: 200% 100%;
+  border: none;
+  color: rgba(238, 255, 142, 0.8);
+  font-size: 14px;
+  background-position-x: center;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(146, 112, 112, 0.6);
+}
+.edit-field-btn:hover {
+  color: rgba(238, 255, 142, 1.0);
+  opacity: 0.9;
+}
+.edit-field-btn[disabled]{
+  background-image: url('../images/gray-fade-background.png');
+  color: #ccc;
+}

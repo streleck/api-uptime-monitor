@@ -105,16 +105,12 @@ function handleClickInitialApiTestButton(event){
 
     // Set up loading Animation
     let awaitingResultsCounter = 0;
-    const blinkingDots = [
-      document.getElementById('loading-dot-1'),
-      document.getElementById('loading-dot-2'),
-      document.getElementById('loading-dot-3'),
-    ];
+    const blinkingDots = document.getElementsByClassName('loading-dot');
     let awaitingResults = setInterval(function(){
       for(let dot of blinkingDots){
       dot.style.setProperty('color', 'rgb(211, 160, 250)');
       }
-      blinkingDots[awaitingResultsCounter % 3].style.setProperty('color', 'rgb(134, 100, 160)');
+      blinkingDots[awaitingResultsCounter % blinkingDots.length].style.setProperty('color', 'rgb(134, 100, 160)');
       awaitingResultsCounter++;
     }, 500);
 

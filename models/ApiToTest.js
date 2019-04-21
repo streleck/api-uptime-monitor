@@ -18,12 +18,19 @@ var ApiToTestSchema = new Schema({
   emails: [{
     type: String,
   }],
+  isPaused: {
+    type: Boolean
+  },
   tests: [{
     wasSuccessful: Boolean,
     timestamp: Number,
     error: {
       type: Object
     }
+  }],
+  notes: [{
+    timestamp: Number,
+    text: String
   }]
 });
 

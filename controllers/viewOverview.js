@@ -7,7 +7,6 @@ module.exports = (req, res, next) => {
   .catch(function(error){
     console.log(error);
     res.render('errorPage', {
-      pageTitle: 'Database Error',
       pageName: 'errorPage',
       message: 'There was an error retrieving database records.'
     });
@@ -28,7 +27,6 @@ module.exports = (req, res, next) => {
       });
     }
     res.render('overview', {
-      pageTitle: 'Apis Overview',
       pageName: 'overview',
       apis: apiList
     });

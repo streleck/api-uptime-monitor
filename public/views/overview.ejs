@@ -1,39 +1,42 @@
 <%- include('head.ejs') %>
   <div id="main">
-    <% if (apis.length === 0) { %>
-      <h2>There are no apis being monitored.</h2>
-    <% } else { %>
-      <table>
-        <thead>
-          <th>API Name</th>
-          <th>URL</th>
-          <th>uptime (total)</th>
-          <th>uptime (24 hrs)</th>
-          <th>Last Check At</th>
-        </thead>
-        <tbody>
+    
+    <table>
+      <thead>
+        <th>API Name</th>
+        <th>URL</th>
+        <th>uptime (total)</th>
+        <th>uptime (24 hrs)</th>
+        <th>Last Check At</th>
+      </thead>
+      <tbody>
+        <% if (apis.length === 0) { %>
+          <tr><td colspan="5"><h2>No APIs currently being monitored.</h2><tr></td></tr>
+        <% } else { %>
           <% apis.forEach((api) => { %>
             <% let totalTests = api.tests.length; %>
             <% let totalSuccess = api.tests.filter(test => test.wasSuccessful).length; %> 
-            <% let lastSevenDaysTests = api.tests.filter(test => test.timestamp >= Date.now() - (1000 * 60 * 60 * 24 * 7)).length; %>
-            <% let lastSevenDaysSuccess = api.tests.filter(test => test.wasSuccessful && test.timestamp >= Date.now() - (1000 * 60 * 60 * 24 * 7)).length; %>
+            <% let lastTewntyFourTests = api.tests.filter(test => test.timestamp >= Date.now() - (1000 * 60 * 60 * 24)).length; %>
+            <% let lastTewntyFourSuccess = api.tests.filter(test => test.wasSuccessful && test.timestamp >= Date.now() - (1000 * 60 * 60 * 24)).length; %>
            
-            <tr id=<%= api.id %>>
-              <td><%= api.name %></td>
-              <td><%= api.url %></td>
-              <td><%= totalTests ? (100 * totalSuccess / totalTests).toFixed(1) + '%' : 'n/a' %></td>
-              <td><%= totalTests ? (100 * lastSevenDaysSuccess / lastSevenDaysTests).toFixed(1) + '%' : 'n/a' %></td>
+            <tr id=<%= 'row-' + api.id %>>
+              <td class="col-name"><%= api.name %></td>
+              <td class="col-url"><%= api.url %></td>
+              <td class="col-percents"><%= totalTests ? (100 * totalSuccess / totalTests).toFixed(1) + '%' : 'n/a' %></td>
+              <td class="col-percents"><%= totalTests ? (100 * lastTewntyFourSuccess / lastTewntyFourTests).toFixed(1) + '%' : 'n/a' %></td>
               </td>
-              <td><%= api.lastTest %></td>
+              <td class="col-last-test"><%= api.lastTest %></td>
             </tr>
           <% }) %>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>+</td>
-          </tr>
-        </tbody>
-      </table>
-    <% } %>
+        <% } %>
+        <tr id="add-api-row">
+          <td colspan="5"><span style="position: relative; bottom: 2px; font-weight: bold;">+</span> Add API</td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="text-align: right;">
+      <button id="auto-refresh-btn" type="button">Auto-refresh: <span id="auto-refresh-on">ON</span>&nbsp;/&nbsp;<span id="auto-refresh-off">OFF</span></button>
+    </div>
+  
   </div>
 <%- include('end.ejs') %>

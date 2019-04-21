@@ -9,15 +9,12 @@ module.exports = (req, res, next) => {
   })
   .then((API) => {
     res.render('detail', {
-      pageTitle: 'Api Records',
       pageName: 'detail',
       apiId: API._id,
       displayName: API.displayName,
       url: API.url,
-      emails: API.emails.join(', '),
-      getChecks: formattedGetChecks,
-      postChecks: formattedPostChecks,
-      totalFails: totalFails
+      emails: API.emails,
+      tests: API.tests
     })
   })
 };

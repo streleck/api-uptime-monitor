@@ -146,4 +146,7 @@ select {
 p.error{
   color: red;
 }
+#test-section-content span {
+  font-weight: bold;
+}
 

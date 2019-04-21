@@ -12,7 +12,6 @@ module.exports = function(apiRecord){
   });
 
   function logTest(status, errorInfo){
-    console.log('error?', errorInfo);
     ApiToTest.findOneAndUpdate(
       { _id: apiRecord._id }, 
       { $push: { tests: 
@@ -37,7 +36,7 @@ module.exports = function(apiRecord){
     .then(function(doc){
       axios(apiRecord.requestBody)
       .then(function(response) {
-        logTest(true, 'success');
+        logTest(true, undefined);
       })
       .catch(function(error) {
         //console.log(`${apiRecord.requestBody.method} fail!`, error.message);

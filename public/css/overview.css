@@ -1,14 +1,18 @@
 table {
   border: 1px solid black;
   border-collapse: collapse;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 2px 3px 1px rgba(0,0,0,0.3);
   background-color: white;
+  width: 100%;
   max-height: 500px;
   overflow: scroll;
+  font-family: 'Asap', sans-serif;
+  font-size: 16px;
 }
 tbody {
   max-height: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
+  color: rgb(125, 90, 150);
 }
 tr, th, td {
   border: 1px solid black;
@@ -16,21 +20,50 @@ tr, th, td {
   max-width: 240px;
   overflow: hidden;
 }
-
 thead {
   background-color: #ddd;
 }
-
-td.success {
-  background-color: lightgreen;
-}
-
-td.error {
-  background-color: #f88
-}
-
 tbody>tr:hover { 
   background-color: lightyellow;
   cursor: pointer;
 }
-
+.col-name{
+  width: 18%;
+}
+.col-url {
+  width: 34%;
+}
+.col-percents {
+  width: 12%;
+  text-align: center;
+}
+.col-last-test {
+  width: 20%;
+}
+#auto-refresh-btn {
+  border: none;
+  color: #eeff8e;
+  font-size: 15px;
+  background-color: transparent;
+  font-family: 'Asap', sans-serif;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px rgba(1,1,1,0.3);
+}
+#auto-refresh-btn span{
+  font-weight: bold;
+}
+.auto-refresh-false>#auto-refresh-on {
+  color: #999;
+}
+.auto-refresh-true>#auto-refresh-on {
+  color: lightgreen;
+}
+.auto-refresh-false>#auto-refresh-off {
+  color: #ff6025
+}
+.auto-refresh-true>#auto-refresh-off {
+  color: #999;
+}

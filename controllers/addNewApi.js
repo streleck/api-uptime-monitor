@@ -1,6 +1,7 @@
 module.exports = (req, res, next) => {
 
   const ApiToTest = require('../models/ApiToTest');
+  const monitorAPI = require('../helper-functions/monitorApi')
  
   const requestBody = JSON.parse(req.body.requestBody);
 
@@ -12,12 +13,13 @@ module.exports = (req, res, next) => {
   }
   
   const newApi = new ApiToTest(requestBody);
-  newApi.save(function(err, doc) {
+  newApi.save(function(err, API) {
     if(err){
       console.log(err);
       res.json({'success': false});
     }
     else {
+      monitorAPI(API)
       res.json({'success': true});
     }
  });

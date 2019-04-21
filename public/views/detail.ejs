@@ -1,85 +1,70 @@
 <%- include('head.ejs') %>
   <div class="main">
-    <div class="info-board">
-      <table>
-        <tbody>
-          <tr>
-            <td class="table-key">name</td><td class="table-value"><%= displayName %></td>
-          </tr>
-          <tr>
-              <td class="table-key">url</td><td class="table-value"><%= url %></td>
-          </tr>
-          <tr>
-              <td class="table-key">emails to</td><td class="table-value"><%= emails %></td>
-          </tr>
-        </tbody>
-      </table>
-              
-              
-              
-      
-      <button id="add-email-recipient-button" type="button">Add email recipient</button>
-      <form action="/addEmail" method="POST" id="add-email-form">
-        <input type="hidden" name="apiId" value="<%= apiId %>">
-        <input type="text" id="new-email-address" name="newEmailAddress">
-        <button type="submit">Add</button>
-        <button id="cancel-add-email-button" type="button">Cancel</button>
-      </form>
-      <br/>
-      <p>total queries:&nbsp;</p><p><%= getChecks.length %></p><br/>
-      <p>total errors:&nbsp;</p><p><%= totalFails %></p><br/>
+    <div style="display: flex; flex-direction: row;">
+      <h2>Details for:&nbsp;&nbsp;<%= displayName ? displayName : url%></h2>
+      <button id="pause-btn" type="button" class="section-header-btn">Pause</button>
+      <button id="delete-btn" type="button" class="section-header-btn">Delete</button>
     </div>
-  
-    <div class="tables-container">
-      <div>
-        <h2 class="table-title">Get Checks</h2>
-        <table>
-          <thead>
-            <th>Time</th>
-            <th>Status</th>
-          </thead>
-          <div class="table-container">
-          <tbody>
-          <% getChecks.forEach((getCheck) => { %>
-            <tr class=<%= getCheck.wasSuccessful ? 'success' : 'error' %>>
-              <td><%= getCheck.time %></td>
-              <td>
-                <% if (!getCheck.wasSuccessful) { %>
-                  <!-- <a href=<%= '/detail/' + apiId + '/error/' + getCheck.id %>><%= getCheck.error %></a> -->
-                  <%= getCheck.error %>
-                <% } else { %> success <% } %>
-              </td>
-            </tr>
-          <% }) %>
-          </tbody>
-        </div>
-        </table>
-      </div>
+    <table>
+      <tbody>
+        <tr>
+          <td class="table-key">name</td>
+          <td class="table-value"><%= displayName %></td>
+          <td class="table-edit"><button class="edit-field-btn" type="button">Edit</button></td>
+        </tr>
+        <tr>
+            <td class="table-key">url</td>
+            <td class="table-value"><%= url %></td>
+            <td class="table-edit"><button class="edit-field-btn" type="button" disabled>Edit</button></td>
+        </tr>
+        <tr>
+            <td class="table-key">emails to</td>
+            <td class="table-value"><%= emails.length > 0 ? emails.join(',') : '[no alert recipients set]'%></td>
+            <td class="table-edit"><button class="edit-field-btn" type="button">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
 
-      <div>
-        <h2 class="table-title">Post Checks</h2>
-        <table>
-          <thead>
-            <th>Time</th>
-            <th>Error</th>
-          </thead>
-          <tbody>
-          <div class="table-container">
-          <% postChecks.forEach((postCheck) => { %>
-            <tr class="<%= postCheck.wasSuccessful ? 'success' : 'error' %>">
-              <td><%= postCheck.time %></td>
-              <td>
-                <% if (!postCheck.wasSuccessful) { %>
-                  <!-- <a href=<%= '/detail/' + apiId + '/error/' + postCheck.id %>><%= postCheck.error %></a> -->
-                  <%= postCheck.error %>
-                  <% } else { %> success <% } %>
-              </td>
-            </tr>
-          <% }) %>
-          </div>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <h2>Stats</h2>
+    <table>
+      <thead>
+        <td colspan="2" style="text-align: right;">
+          <select>
+            <option>All Time</option>
+            <option>Last Hour</option>
+            <option>Last 24 Hours</option>
+            <option>Last Week</option>
+          </select>
+        </td>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-key">total tests</td>
+          <td class="table-value">2000</td>
+        </tr>
+        <tr>
+            <td class="table-key">success (pct.)</td>
+            <td class="table-value">1333 (66.7%)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Notes</h2>
+    <table>
+      <tbody>
+        <tr>
+          <td>04/20/2019 7:41 PM</td>
+          <td>A bunch of fucked up shit happened at this API today.
+            <button class="edit-field-btn" type="button">X</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">+ Add Note</td>
+        </tr>
+      </tbody>
+    </table>
+              
+              
+   
   </div>
 <%- include('end.ejs') %>

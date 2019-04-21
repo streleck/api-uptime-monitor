@@ -1,7 +1,11 @@
 html {
   height: 100%;
 }
+div {
+  margin: 0;
+}
 body {
+  margin: 0;
   background-color: black;
   background-image: url("../images/purple-fade-background.png");
   background-attachment: fixed;
@@ -10,6 +14,9 @@ body {
   padding-bottom: 100px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+}
+button:focus {
+  outline:0;
 }
 div.main-header {
   display: block;
