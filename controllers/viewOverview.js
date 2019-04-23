@@ -14,14 +14,11 @@ module.exports = (req, res, next) => {
   .then(function(apis){
     let apiList = [];
     for(let api of apis){
-      let n = 0;
-      // for(let getCheck of api.getChecks){
-      //   console.log(n + ') ' + getCheck.timestamp)
-      // }
-      apiList.push({
+        const lastFailAt = api.tests.filter((test) => !test.wasSuccessful).map((fail) => fail.timestamp).pop();
+        apiList.push({
         name: api.displayName,
         url: api.url,
-        lastTest: api.tests.length === 0 ? 'none' : moment(api.tests[api.tests.length -1].timestamp).format('L LT'),
+        lastFail: lastFailAt ? moment(lastFailAt).format('M/DD LT') : '[no tests failed]',
         id: api._id,
         tests: api.tests
       });

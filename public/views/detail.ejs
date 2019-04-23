@@ -1,70 +1,108 @@
 <%- include('head.ejs') %>
   <div class="main">
-    <div style="display: flex; flex-direction: row;">
-      <h2>Details for:&nbsp;&nbsp;<%= displayName ? displayName : url%></h2>
-      <button id="pause-btn" type="button" class="section-header-btn">Pause</button>
+    <div class="section-header">
+      <h2>Details for:&nbsp;&nbsp;<%= displayName ? displayName : url%><%= isPaused ? ' (paused)' : '' %></h2>
+      <% if(isPaused) { %>
+        <button id="un-pause-btn" type="button" class="section-header-btn" data-id="<%= apiId %>">Un-Pause</button>
+      <% } else { %>
+        <button id="pause-btn" type="button" class="section-header-btn" style="padding-bottom: 2px;" data-id="<%= apiId %>">
+          <i class="material-icons" style="font-size: 12px;position: relative; top: 1px">pause</i> Pause
+        </button>
+      <% } %>
       <button id="delete-btn" type="button" class="section-header-btn">Delete</button>
     </div>
     <table>
       <tbody>
         <tr>
           <td class="table-key">name</td>
-          <td class="table-value"><%= displayName %></td>
-          <td class="table-edit"><button class="edit-field-btn" type="button">Edit</button></td>
-        </tr>
-        <tr>
-            <td class="table-key">url</td>
-            <td class="table-value"><%= url %></td>
-            <td class="table-edit"><button class="edit-field-btn" type="button" disabled>Edit</button></td>
-        </tr>
-        <tr>
-            <td class="table-key">emails to</td>
-            <td class="table-value"><%= emails.length > 0 ? emails.join(',') : '[no alert recipients set]'%></td>
-            <td class="table-edit"><button class="edit-field-btn" type="button">Edit</button></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>Stats</h2>
-    <table>
-      <thead>
-        <td colspan="2" style="text-align: right;">
-          <select>
-            <option>All Time</option>
-            <option>Last Hour</option>
-            <option>Last 24 Hours</option>
-            <option>Last Week</option>
-          </select>
-        </td>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="table-key">total tests</td>
-          <td class="table-value">2000</td>
-        </tr>
-        <tr>
-            <td class="table-key">success (pct.)</td>
-            <td class="table-value">1333 (66.7%)</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>Notes</h2>
-    <table>
-      <tbody>
-        <tr>
-          <td>04/20/2019 7:41 PM</td>
-          <td>A bunch of fucked up shit happened at this API today.
-            <button class="edit-field-btn" type="button">X</button>
+          <td class="table-value" id="display-name"><%= displayName %></td>
+          <td class="table-value edit-value hidden" id="edit-display-name">
+            <div class="edit-field-container">
+              <button class="purple-btn x-btn" type="button">X</button>
+              <input type="text" value="<%= displayName %>" data-field="displayName">
+            </div>
+          </td>  
+          <td class="table-edit">
+            <button class="purple-btn edit-field-btn" type="button">Edit</button>
+            <button class="purple-btn enter-field-btn hidden" type="button" data-id="<%= apiId %>">Enter</button>
           </td>
         </tr>
         <tr>
-          <td colspan="2">+ Add Note</td>
+          <td class="table-key">url</td>
+          <td class="table-value"><%= url %></td>
+          <td class="table-edit"><button class="purple-btn edit-field-btn" type="button" disabled>Edit</button></td>
+        </tr>
+        <tr>
+          <td class="table-key">emails to</td>
+          <td class="table-value"><%= emails.length > 0 ? emails.join(', ') : '[no alert recipients set]'%></td>
+          <td class="table-value edit-value hidden">
+            <div class="edit-field-container">
+              <button class="purple-btn x-btn" type="button">X</button>
+              <input type="text" value="<%= emails.length > 0 ? emails.join(', ') : ''%>" data-field="emails">
+            </div>
+          </td>  
+          <td class="table-edit">
+            <button class="purple-btn edit-field-btn" type="button">Edit</button>
+            <button class="purple-btn enter-field-btn hidden" type="button" data-id="<%= apiId %>">Enter</button>
+          </td>
         </tr>
       </tbody>
     </table>
-              
-              
-   
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+      <div style="width: 40%">
+        <div class="section-header">
+          <h2>Stats</h2>
+          <select id="stats-select">
+            <option value="all-time">All Time</option>
+            <option value="last-hour">Last Hour</option>
+            <option value="last-twentyfour">Last 24 Hours</option>
+            <option value="last-week">Last Week</option>
+          </select>
+        </div>
+        <table>
+          <% for(let timeframe of ['all-time', 'last-hour', 'last-twentyfour', 'last-week']){ %>
+            <tbody id="stats-<%= timeframe %>" class="<%= 'stats-timeframe' + ((timeframe === 'all-time') ? '' : ' hidden') %>">
+              <% if(stats[timeframe]['total tests'] === 0) { %>
+                <tr>
+                  <td colspan="2">no tests in this time span</td>
+                </tr>
+              <% } else { %>
+                <% for(let result of Object.keys(stats[timeframe])){ %>
+                  <tr>
+                    <td><%= result %></td>
+                    <td>
+                      <span class="raw-stat"><%= stats[timeframe][result] %></span>
+                      <% if(result !== 'total tests') { %>
+                        &nbsp;
+                        <%='(' +  (100 * (stats[timeframe][result] / stats[timeframe]['total tests'])).toFixed(1) + '%)' %>
+                      <% } %>
+                    </td>
+                  </tr>
+                <% } %>
+              <% } %>
+            </tbody>
+          <% } %>
+        </table>
+      </div>
+      <div style="width: 55%">
+        <div class="section-header">
+          <h2>Notes</h2>
+          <button id="add-note-btn" type="button" class="section-header-btn">+ Add Note</button>
+        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>04/20/2019 7:41 PM</td>
+              <td>A bunch of fucked up shit happened at this API today.
+                <button class="purple-btn" type="button">X</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">+ Add Note</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> 
   </div>
 <%- include('end.ejs') %>

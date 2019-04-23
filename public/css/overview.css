@@ -37,8 +37,9 @@ tbody>tr:hover {
   width: 12%;
   text-align: center;
 }
-.col-last-test {
+.col-last-fail {
   width: 20%;
+  text-align: center;
 }
 #auto-refresh-btn {
   border: none;

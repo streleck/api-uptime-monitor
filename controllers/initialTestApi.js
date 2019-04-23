@@ -5,13 +5,13 @@ module.exports = (req, res, next) => {
   let requestBody = JSON.parse(req.body.requestBody).requestBody;
 
   axios(requestBody)
-  .catch(function(error){
+  .catch((error) => {
     //console.log(']]\n]]\n]]\n]]\n]]\n]]\n', error);
-    res.json({"success": false, "code": error.code});
+    res.json({"success": false, "message": error.message});
   })
-  .then(function(response) {
+  .then((response) => {
     //console.log('##\n##\n##\n##\n##\n##\n##\n##\n##\n##\n', response);
-    res.json({"success": true, "status": response.status, "statusText": response.statusText});
+    res.json({"success": true, "status": response.status ? response.status : '', "statusText": response.statusText});
   })
    
 }

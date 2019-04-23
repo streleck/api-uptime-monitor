@@ -7,7 +7,7 @@
         <th>URL</th>
         <th>uptime (total)</th>
         <th>uptime (24 hrs)</th>
-        <th>Last Check At</th>
+        <th>Last Fail At</th>
       </thead>
       <tbody>
         <% if (apis.length === 0) { %>
@@ -25,7 +25,7 @@
               <td class="col-percents"><%= totalTests ? (100 * totalSuccess / totalTests).toFixed(1) + '%' : 'n/a' %></td>
               <td class="col-percents"><%= totalTests ? (100 * lastTewntyFourSuccess / lastTewntyFourTests).toFixed(1) + '%' : 'n/a' %></td>
               </td>
-              <td class="col-last-test"><%= api.lastTest %></td>
+              <td class="col-last-fail"><%= api.lastFail %></td>
             </tr>
           <% }) %>
         <% } %>

@@ -16,6 +16,10 @@ h2 {
   text-shadow: 1px 2px 1px rgba(0,0,0,0.3);
   margin: 0 0 5px 0;
 }
+.section-header {
+  display: flex;
+  flex-direction: row;
+}
 .section-header-btn {
   color: rgba(238, 255, 142, 0.8);
   font-size: 13px;
@@ -30,6 +34,16 @@ h2 {
   background-color: white;
   color: rgb(40,40,0);
   opacity: 0.5;
+}
+.section-header select {
+  background-color: transparent;
+  color: rgb(238, 255, 142);
+  height: 20px;
+  border-radius: 2px;
+  margin: 4px 0 0 10px;
+}
+.section-header option {
+  background-color: rgb(84, 114, 173)
 }
 tbody {
   max-height: 300px;
@@ -46,23 +60,61 @@ tr, th, td {
   width: 50px;
   padding: 10px;
 }
-.edit-field-btn {
-  height: 26px;
-  padding: 0 11px 0 10px;
+.table-key{
+  width: 30%;
+}
+.purple-btn {
   background-image: url('../images/purple-fade-background.png');
   background-size: 200% 100%;
   border: none;
   color: rgba(238, 255, 142, 0.8);
-  font-size: 14px;
   background-position-x: center;
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(146, 112, 112, 0.6);
 }
-.edit-field-btn:hover {
+.purple-btn:hover {
   color: rgba(238, 255, 142, 1.0);
   opacity: 0.9;
+}
+.edit-field-btn, .enter-field-btn {
+  height: 26px;
+  width: 55px;
+  padding: 0 11px 0 10px;
+  font-size: 14px;
+  margin-right: 1px;
 }
 .edit-field-btn[disabled]{
   background-image: url('../images/gray-fade-background.png');
   color: #ccc;
+}
+.edit-field-btn[disabled]:hover{
+  opacity: 1.0;
+  color: #ccc;
+}
+.x-btn {
+  height: 22px;
+  width: 22px;
+  margin-right: 6px;
+  position: relative;
+  top: 2px;
+}
+.hidden {
+  display: none;
+}
+.raw-stat {
+  font-weight: bold;
+}
+.edit-value {
+  padding: 0 10px 0 5px;
+}
+.edit-value input {
+  width: calc(100% - 28px);
+  height: 20px;
+  font-size: 18px;
+  margin: 0;
+  padding-left: 5px;
+}
+.edit-field-container {
+  display: flex;
+  flex-direction: row;
 }

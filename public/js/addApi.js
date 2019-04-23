@@ -125,7 +125,6 @@ function handleClickInitialApiTestButton(event){
     })
     .then(function(response){
       clearInterval(awaitingResults);
-      console.log('rezzzz: ', response);
       if(response.success){
         document.querySelector('#api-test-section h4').innerText = 'response:';
         document.getElementById('initial-test-results').innerHTML = `<p>status: ${response.statusText}</p><p>statusCode: ${response.status}</p>`;
@@ -133,7 +132,7 @@ function handleClickInitialApiTestButton(event){
       }
       else{
         document.querySelector('#api-test-section h4').innerText = 'response:';
-        document.getElementById('initial-test-results').innerHTML = `<p class="error">error: ${response.code}`;
+        document.getElementById('initial-test-results').innerHTML = `<p class="error">error: ${response.message}`;
       }
     })
     .catch(function(err){

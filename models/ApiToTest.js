@@ -25,7 +25,8 @@ var ApiToTestSchema = new Schema({
     wasSuccessful: Boolean,
     timestamp: Number,
     error: {
-      type: Object
+      message: String,
+      code: String
     }
   }],
   notes: [{
