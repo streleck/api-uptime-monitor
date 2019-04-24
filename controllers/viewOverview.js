@@ -17,6 +17,7 @@ module.exports = (req, res, next) => {
         const lastFailAt = api.tests.filter((test) => !test.wasSuccessful).map((fail) => fail.timestamp).pop();
         apiList.push({
         name: api.displayName,
+        isPaused: api.isPaused,
         url: api.url,
         lastFail: lastFailAt ? moment(lastFailAt).format('M/DD LT') : '[no tests failed]',
         id: api._id,

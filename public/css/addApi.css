@@ -22,11 +22,13 @@ input {
   padding-left: 6px;
   font-size: 14px;
   border: 1px solid #aaa;
+  outline-color: lightgreen;
 }
 select {
   font-size: 16px;
   padding: 4px 4px 4px 8px;
   width: 80px;
+  outline-color: lightgreen;
 }
 #main h2{
   font-size: 30px;

@@ -33,7 +33,10 @@ module.exports = function(apiRecord){
       console.log('error retrieving record. does it exist?', err);
       clearInterval(monitor);
     })
-    .then(function(doc){
+    .then(function(API){
+      if(API.isPaused){
+        clearInterval(monitor);
+      }
       axios(apiRecord.requestBody)
       .then(function(response) {
         logTest(true, undefined);
@@ -46,10 +49,10 @@ module.exports = function(apiRecord){
         }
         logTest(false, errorInfo);
         let hasFailedLastThreeTests =
-          doc.tests.length >= 3 && (
-          doc.tests[doc.tests.length -1].wasSuccessful ||
-          doc.tests[doc.tests.length -2].wasSuccessful ||
-          doc.tests[doc.tests.length -3].wasSuccessful);
+          API.tests.length >= 3 && (
+          API.tests[API.tests.length -1].wasSuccessful ||
+          API.tests[API.tests.length -2].wasSuccessful ||
+          API.tests[API.tests.length -3].wasSuccessful);
         if(hasFailedLastThreeTests){
            sendEmails(
              apiRecord.emails,

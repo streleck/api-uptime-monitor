@@ -30,7 +30,7 @@ h2 {
   margin: 5px 0 0 15px;
   height: 20px;
 }
-.section-header-btn:hover {
+.section-header-btn:hover, .section-header-btn[active]  {
   background-color: white;
   color: rgb(40,40,0);
   opacity: 0.5;
@@ -57,11 +57,11 @@ tr, th, td {
   overflow: hidden;
 }
 .table-edit {
-  width: 50px;
+  width: 60px;
   padding: 10px;
 }
 .table-key{
-  width: 30%;
+  width: 27%;
 }
 .purple-btn {
   background-image: url('../images/purple-fade-background.png');
@@ -110,11 +110,54 @@ tr, th, td {
 .edit-value input {
   width: calc(100% - 28px);
   height: 20px;
-  font-size: 18px;
+  font-size: 16px;
   margin: 0;
   padding-left: 5px;
+  outline-color: lightgreen;
 }
 .edit-field-container {
   display: flex;
   flex-direction: row;
+}
+td p {
+  margin: 5px;
+  font-size: 16px;
+}
+small {
+  font-size: 12px;
+  color: gray;
+  margin-left: 5px;
+}
+.note-input-row {
+  padding: 0;
+}
+.note-input-row td{
+  padding: 0;
+  margin: 0;
+}
+textarea {
+  margin: 4px 7px 0 3px;
+  width: calc(100% - 11px);
+  height: 100%;
+  font-size: 16px;
+  padding: 2px;
+  border: none;
+  resize: none;
+  outline-color: lightgreen;
+  font-family: 'Asap', sans-serif;
+}
+#add-note-row {
+  cursor: pointer;
+}
+#add-note-row:hover {
+  background-color: lightyellow;
+}
+.delete-note-btn {
+  font-size: 10px;
+  width: 12px;
+  text-align: center;
+  padding: 0;
+  background-size: 180%;
+  position: relative;
+  bottom: 3px;
 }

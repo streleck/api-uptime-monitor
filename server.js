@@ -26,7 +26,7 @@ var PORT = process.env.PORT || 3000;
 
 var ApiToTest = require('./models/ApiToTest');
 
-ApiToTest.find({}, function(err, APIs){
+ApiToTest.find({isPaused: false}, function(err, APIs){
   if(err){
     console.log('err in server.js, line 30: ', err);
   }

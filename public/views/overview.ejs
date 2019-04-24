@@ -19,8 +19,13 @@
             <% let lastTewntyFourTests = api.tests.filter(test => test.timestamp >= Date.now() - (1000 * 60 * 60 * 24)).length; %>
             <% let lastTewntyFourSuccess = api.tests.filter(test => test.wasSuccessful && test.timestamp >= Date.now() - (1000 * 60 * 60 * 24)).length; %>
            
-            <tr id=<%= 'row-' + api.id %>>
-              <td class="col-name"><%= api.name %></td>
+            <tr id=<%= 'row-' + api.id %> class=<%= (apis.length < 7) ? 'wide-row' : '' %>>
+              <td class="col-name">
+                <%= api.name %>
+                <% if(api.isPaused) { %>
+                  <span class="paused">(paused)</span>
+                <% } %>
+              </td>
               <td class="col-url"><%= api.url %></td>
               <td class="col-percents"><%= totalTests ? (100 * totalSuccess / totalTests).toFixed(1) + '%' : 'n/a' %></td>
               <td class="col-percents"><%= totalTests ? (100 * lastTewntyFourSuccess / lastTewntyFourTests).toFixed(1) + '%' : 'n/a' %></td>

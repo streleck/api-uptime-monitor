@@ -1,11 +1,11 @@
 <%- include('head.ejs') %>
-  <div class="main">
+  <div id="main" data-id="<%= apiId %>">
     <div class="section-header">
       <h2>Details for:&nbsp;&nbsp;<%= displayName ? displayName : url%><%= isPaused ? ' (paused)' : '' %></h2>
       <% if(isPaused) { %>
-        <button id="un-pause-btn" type="button" class="section-header-btn" data-id="<%= apiId %>">Un-Pause</button>
+        <button id="un-pause-btn" type="button" class="section-header-btn">Un-Pause</button>
       <% } else { %>
-        <button id="pause-btn" type="button" class="section-header-btn" style="padding-bottom: 2px;" data-id="<%= apiId %>">
+        <button id="pause-btn" type="button" class="section-header-btn" style="padding-bottom: 2px;">
           <i class="material-icons" style="font-size: 12px;position: relative; top: 1px">pause</i> Pause
         </button>
       <% } %>
@@ -19,7 +19,7 @@
           <td class="table-value edit-value hidden" id="edit-display-name">
             <div class="edit-field-container">
               <button class="purple-btn x-btn" type="button">X</button>
-              <input type="text" value="<%= displayName %>" data-field="displayName">
+              <input class="edit-field-input" type="text" value="<%= displayName %>" data-field="displayName">
             </div>
           </td>  
           <td class="table-edit">
@@ -38,12 +38,12 @@
           <td class="table-value edit-value hidden">
             <div class="edit-field-container">
               <button class="purple-btn x-btn" type="button">X</button>
-              <input type="text" value="<%= emails.length > 0 ? emails.join(', ') : ''%>" data-field="emails">
+              <input type="text" class="edit-field-input" value="<%= emails.length > 0 ? emails.join(', ') : ''%>" data-field="emails">
             </div>
           </td>  
           <td class="table-edit">
             <button class="purple-btn edit-field-btn" type="button">Edit</button>
-            <button class="purple-btn enter-field-btn hidden" type="button" data-id="<%= apiId %>">Enter</button>
+            <button class="purple-btn enter-field-btn hidden" type="button">Enter</button>
           </td>
         </tr>
       </tbody>
@@ -91,14 +91,29 @@
         </div>
         <table>
           <tbody>
-            <tr>
-              <td>04/20/2019 7:41 PM</td>
-              <td>A bunch of fucked up shit happened at this API today.
-                <button class="purple-btn" type="button">X</button>
+              <tr class="note-input-row hidden" id="upper-note-row">
+                <td>
+                  <textarea rows="6"></textarea>
+                </td>
+              </tr>
+            <% for(let note of notes) { %> 
+              <tr>
+                <td>
+                  <p>
+                    <%= note.text %>&nbsp;
+                    <button class="delete-note-btn purple-btn" type="button" data-note-id="<%= note._id %>">x</button>
+                  </p>
+                  <small><%= note.timestamp %></small>
+                </td>
+              </tr>
+            <% } %>
+            <tr class="note-input-row hidden" id="lower-note-row">
+              <td>
+                <textarea rows="6"></textarea>
               </td>
             </tr>
             <tr>
-              <td colspan="2">+ Add Note</td>
+              <td id="add-note-row"><span style="position: relative; bottom: 2px; font-weight: bold;">+</span> Add Note</td>
             </tr>
           </tbody>
         </table>

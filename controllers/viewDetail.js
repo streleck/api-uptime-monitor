@@ -74,6 +74,11 @@ module.exports = (req, res, next) => {
         stats = formatStats('last-week', test, stats);
       } 
     }
+
+    var notes = API.notes.map((note) => {
+      return { text: note.text, timestamp: moment(note.timestamp).format('M/DD LT'), _id: note._id};
+    })
+
     res.render('detail', {
       pageName: 'detail',
       apiId: API._id,
@@ -81,7 +86,8 @@ module.exports = (req, res, next) => {
       isPaused: API.isPaused,
       url: API.url,
       emails: API.emails,
-      stats
+      stats,
+      notes: notes.reverse(),
     })
   })
   .catch((error) => {

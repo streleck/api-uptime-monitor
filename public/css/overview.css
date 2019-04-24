@@ -20,6 +20,9 @@ tr, th, td {
   max-width: 240px;
   overflow: hidden;
 }
+.wide-row {
+  height: 60px;
+}
 thead {
   background-color: #ddd;
 }
@@ -28,7 +31,10 @@ tbody>tr:hover {
   cursor: pointer;
 }
 .col-name{
-  width: 18%;
+  width: 20%;
+}
+.paused {
+  color: #ff6025;
 }
 .col-url {
   width: 34%;
