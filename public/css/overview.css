@@ -1,3 +1,6 @@
+#main {
+  margin-top: 16px;
+}
 table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -34,7 +37,7 @@ tbody>tr:hover {
   width: 20%;
 }
 .paused {
-  color: #ff6025;
+  color: rgb(222,89,149)
 }
 .col-url {
   width: 34%;
