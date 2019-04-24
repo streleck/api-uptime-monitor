@@ -39,7 +39,16 @@ for(let button of cancelEditNameButton){
 }
 
 document.getElementById('delete-btn').addEventListener('mouseup', (event) => {
-  if(confirm('This will remove all test records for this API. Are you sure?')){
+  function confirmDialog(msg) {
+    return new Promise(function (resolve, reject) {
+      let confirmed = window.confirm(msg);
+  
+      return confirmed ? resolve(true) : reject(false);
+    });
+   }
+
+  confirmDialog('you sure, dude?')
+  .then(() => {
     $.ajax({
       type: 'DELETE',
       url: '/delete-api',
@@ -55,10 +64,10 @@ document.getElementById('delete-btn').addEventListener('mouseup', (event) => {
     .catch((err) => {
       console.log(err);
     })
-  }
-  else {
-    return;
-  }
+  })
+  .catch(
+    console.log('good choice, man')
+  );
 });
 
 // change view of 'stats' to different time frames

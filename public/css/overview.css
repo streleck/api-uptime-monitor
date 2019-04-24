@@ -34,20 +34,21 @@ tbody>tr:hover {
   cursor: pointer;
 }
 .col-name{
-  width: 20%;
+  width: 23%;
 }
 .paused {
-  color: rgb(222,89,149)
+  color: rgb(222,89,149);
+  font-size: 14px;
 }
 .col-url {
-  width: 34%;
+  width: 37%;
 }
 .col-percents {
-  width: 12%;
+  width: 11%;
   text-align: center;
 }
 .col-last-fail {
-  width: 20%;
+  width: 18%;
   text-align: center;
 }
 #auto-refresh-btn {
