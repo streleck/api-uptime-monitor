@@ -34,6 +34,10 @@ module.exports = function(apiRecord){
       clearInterval(monitor);
     })
     .then(function(API){
+      if(!API){
+        console.log(`No record with id ${apiRecord.id} found`);
+        clearInterval(monitor);
+      }
       if(API.isPaused){
         clearInterval(monitor);
       }

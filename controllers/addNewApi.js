@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     requestBody.url = requestBody.url.split('//')[1];
   }
   
-  const newApi = new ApiToTest(requestBody);
+  const newApi = new ApiToTest({...requestBody, tests: {wasSuccessful: true, timestamp: Date.now()}});
   newApi.save(function(err, API) {
     if(err){
       console.log(err);
