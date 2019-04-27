@@ -10,7 +10,6 @@ const autoRefreshCycle = setInterval(() => {
 }, 1000 * 60 * 3);
 
 const tableRows = document.getElementsByTagName('tr');
-
 for(let row of tableRows){
   row.addEventListener('click', function(event){
     console.log('gug?', event.currentTarget.id);
