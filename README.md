@@ -1,8 +1,11 @@
 # api-uptime-monitor
 https://api-uptime-monitor.herokuapp.com/
-![Preview Image](/public/images/api_uptime_monitor.png)
 
-## Technical Details
+This web app pings API endpoints in five minute intervals and records uptime data. It includes an overview page of all APIs being monitored, a details page for each API, and a form page to start monitoring a new API. You can enter an emailaddress to be alerted when  the API goes down.
+
+![Preview Image](/public/images/api_uptime_monitor.png) 
+
+## Technical Details 
 
 This app is built on a Node/Express back-end. It uses an MVC pattern and views use EJS templating. The database is a MongoDB and I use the Mongoose ORM. API calls are made using the [Axios](https://www.npmjs.com/package/axios) library. Notifications are sent using [Sendgrid](https://sendgrid.com/docs/for-developers/sending-email/).
 
