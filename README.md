@@ -1,5 +1,6 @@
 # api-uptime-monitor
 https://api-uptime-monitor.herokuapp.com/
+![Preview Image](/public/images/api_uptime_monitor.png)
 
 ## Technical Details
 
