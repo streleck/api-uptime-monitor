@@ -1,13 +1,13 @@
 # api-uptime-monitor
 https://api-uptime-monitor.herokuapp.com/
 
-This web app pings API endpoints in five minute intervals and records uptime data. It includes an [overview](https://api-uptime-monitor.herokuapp.com) of all APIs being monitored, a [details page](https://api-uptime-monitor.herokuapp.com/details/5cc28df9f001720017b73151) for each API, and a form page to [start monitoring a new API](https://api-uptime-monitor.herokuapp.com/add). You can enter an emailaddress to be alerted when  the API goes down.
+This web app pings API endpoints in five minute intervals and records uptime data. It includes an [overview](https://api-uptime-monitor.herokuapp.com) of all APIs being monitored, a [details page](https://api-uptime-monitor.herokuapp.com/details/5cc28df9f001720017b73151) for each API, and a form page to [start monitoring a new API](https://api-uptime-monitor.herokuapp.com/add). You can enter an email address to be alerted when  the API goes down.
 
 ![Preview Image](/public/images/api_uptime_monitor.png) 
 
 ## Technical Details 
 
-This app is built on a Node/Express back-end. It uses an [M](https://github.com/streleck/api-uptime-monitor/tree/master/models)[V](https://github.com/streleck/api-uptime-monitor/tree/master/public/views)[C](https://github.com/streleck/api-uptime-monitor/tree/master/controllers) pattern and views use EJS templating. The database is a MongoDB and I use the Mongoose ORM. API calls are made using the [Axios](https://www.npmjs.com/package/axios) library. Notifications are sent using [Sendgrid](https://sendgrid.com/docs/for-developers/sending-email/).
+This app is built on a Node/Express back-end. It uses an [M](https://github.com/streleck/api-uptime-monitor/tree/master/models)[V](https://github.com/streleck/api-uptime-monitor/tree/master/public/views)[C](https://github.com/streleck/api-uptime-monitor/tree/master/controllers) pattern and views use EJS templating. The front end uses vanilla javascript. The database is a MongoDB and I use the Mongoose ORM. API calls are made using the [Axios](https://www.npmjs.com/package/axios) library. Notifications are sent using [Sendgrid](https://sendgrid.com/docs/for-developers/sending-email/).
 
 ## Using API Uptime Monitor
 
