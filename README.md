@@ -1,7 +1,7 @@
 # api-uptime-monitor
 https://api-uptime-monitor.herokuapp.com/
 
-This web app pings API endpoints in five minute intervals and records uptime data. It includes an [overview](https://api-uptime-monitor.herokuapp.com/page) of all APIs being monitored, a [details page](https://api-uptime-monitor.herokuapp.com/details/5cc28df9f001720017b73151) for each API, and a form page to [start monitoring a new API](https://api-uptime-monitor.herokuapp.com/add). You can enter an emailaddress to be alerted when  the API goes down.
+This web app pings API endpoints in five minute intervals and records uptime data. It includes an [overview](https://api-uptime-monitor.herokuapp.com) of all APIs being monitored, a [details page](https://api-uptime-monitor.herokuapp.com/details/5cc28df9f001720017b73151) for each API, and a form page to [start monitoring a new API](https://api-uptime-monitor.herokuapp.com/add). You can enter an emailaddress to be alerted when  the API goes down.
 
 ![Preview Image](/public/images/api_uptime_monitor.png) 
 
