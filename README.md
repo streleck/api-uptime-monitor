@@ -1,13 +1,13 @@
 # api-uptime-monitor
 https://api-uptime-monitor.herokuapp.com/
 
-This project started as a personal tool. I was working on an Elasticsearch API and needed to be alerted when it went down. After building something that worked for my purposes, I began thinking it would be interesting to work more on it - I wanted to generalize it to work on any type API. I wanted to put some love into the UI and make something that looked and felt good to use. I wanted to do so focusing on the base technologies - Node/Express and Vanilla Javascript. Thus API Uptime Monitor was born.
+This web app pings API endpoints in five minute intervals and records uptime data. It includes an [overview](https://api-uptime-monitor.herokuapp.com) of all APIs being monitored, a [details page](https://api-uptime-monitor.herokuapp.com/details/5cc28df9f001720017b73151) for each API, and a form page to [start monitoring a new API](https://api-uptime-monitor.herokuapp.com/add). You can enter an email address to be alerted when  the API goes down.
 
-![Preview Image](/public/images/api_uptime_monitor.png)
+![Preview Image](/public/images/api_uptime_monitor.png) 
 
-## Technical Details
+## Technical Details 
 
-This app is built on a Node/Express back-end. It uses an MVC pattern and views use EJS templating. The database is a MongoDB and I use the Mongoose ORM. API calls are made using the [Axios](https://www.npmjs.com/package/axios) library. Notifications are sent using [Sendgrid](https://sendgrid.com/docs/for-developers/sending-email/).
+This app is built on a Node/Express back-end. It uses an [M](https://github.com/streleck/api-uptime-monitor/tree/master/models)[V](https://github.com/streleck/api-uptime-monitor/tree/master/public/views)[C](https://github.com/streleck/api-uptime-monitor/tree/master/controllers) pattern and views use EJS templating. The front end uses vanilla javascript. The database is a MongoDB and I use the Mongoose ORM. API calls are made using the [Axios](https://www.npmjs.com/package/axios) library. Notifications are sent using [Sendgrid](https://sendgrid.com/docs/for-developers/sending-email/).
 
 ## Using API Uptime Monitor
 
