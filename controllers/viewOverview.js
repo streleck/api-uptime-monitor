@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
         name: api.displayName,
         isPaused: api.isPaused,
         url: api.url,
-        lastFail: lastFailAt ? moment(lastFailAt).timezone('America/Chicago').format('M/DD LT') : '[no tests failed]',
+        lastFail: lastFailAt ? moment(lastFailAt).format('M/DD LT') : '[no tests failed]',
         id: api._id,
         tests: api.tests
       });
